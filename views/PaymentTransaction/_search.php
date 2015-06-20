@@ -19,8 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'student_nis') ?>
 
-    <?= $form->field($model, 'payment_for_id') ?
-    >
+    <?= $form->field($model, 'payment_for_id') ?>
     <?= $form->field($model, 'month') ?>
 
     <?= $form->field($model, 'payment_for_name') ?>

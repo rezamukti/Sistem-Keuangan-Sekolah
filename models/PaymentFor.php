@@ -30,6 +30,7 @@ class PaymentFor extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name', 'year', 'price', 'semester_id'], 'required', 'message'=>'Harus diisi!'],
             [['year', 'soft_delete'], 'safe'],
             [['price'], 'number'],
             [['name'], 'string', 'max' => 15],
@@ -44,11 +45,25 @@ class PaymentFor extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'year' => 'Year',
-            'price' => 'Price',
-            'semester_id' => 'Semester ID',
+            'name' => 'Jenis Pembayaran',
+            'year' => 'Tahun',
+            'price' => 'Harga',
+            'semester_id' => 'Semester',
             'soft_delete' => 'Soft Delete',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSemester()
+    {
+        return $this->hasOne(Semester::className(), ['id' => 'semester_id']);
+    }
+
+
+    public function getSemesterName(){
+        $model=$this->semester;
+        return $model ? $model->name:'';
     }
 }

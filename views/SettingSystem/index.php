@@ -4,29 +4,30 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\PaymentMethodSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Metode Pembayaran');
+$this->title = Yii::t('app', 'Setting Systems');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="payment-method-index">
+<div class="setting-system-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Entri Metode Pembayaran'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Setting System'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            // 'id',
+            'id',
             'name',
+            'description',
+            'address',
+            'email:email',
+            // 'telp',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

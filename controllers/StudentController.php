@@ -5,8 +5,10 @@ namespace app\controllers;
 use Yii;
 use app\models\Student;
 use app\models\StudentSearch;
+use app\models\StudentImport;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 /**
@@ -75,7 +77,7 @@ class StudentController extends Controller
         $model = new Student();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('index');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -130,4 +132,46 @@ class StudentController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    public function actionImport()
+    {
+        $model = new StudentImport();
+
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->file = UploadedFile::getInstance($model, 'file');
+
+            if ( $model->file )
+                {
+                    $time = time();
+                    $model->file->saveAs('csv/' .$time. '.' . $model->file->extension);
+                    $model->file = 'csv/' .$time. '.' . $model->file->extension;
+
+                     $handle = fopen($model->file, "r");
+                     while (($fileop = fgetcsv($handle, 1000, ",")) !== false) 
+                     {
+                        $nis = $fileop[0];
+                        $fullname = $fileop[1];
+                        $location = $fileop[2];
+                        // print_r($fileop);exit();
+                        $sql = "INSERT INTO details(nis, full_name) VALUES ('$nis', '$fullname')";
+                        $query = Yii::$app->db->createCommand($sql)->execute();
+                     }
+
+                     if ($query) 
+                     {
+                        echo "data upload successfully";
+                     }
+
+                }
+
+            $model->save();
+            return $this->redirect('index');
+        } else {
+            return $this->render('import', [
+                'model' => $model,
+            ]);
+        }
+    }
+
 }

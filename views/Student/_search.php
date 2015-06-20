@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nisn') ?>
 
-    <?= $form->field($model, 'nik') ?>
+    <?= $form->field($model, 'nis') ?>
 
     <?= $form->field($model, 'full_name') ?>
 

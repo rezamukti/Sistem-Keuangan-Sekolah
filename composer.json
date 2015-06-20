@@ -19,8 +19,10 @@
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
         "yiisoft/yii2-authclient": "*",
-        "mpdf/mpdf":"*",
-        "phpoffice/phpexcel": "*"
+        "phpoffice/phpexcel": "1.8.0",
+        "kartik-v/yii2-export": "*",
+        "kartik-v/yii2-widgets": "*",
+        "kartik-v/yii2-mpdf": "*"
 
     },
     "require-dev": {

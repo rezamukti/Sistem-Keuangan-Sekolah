@@ -11,6 +11,7 @@ use app\models\Regency;
 use app\models\City;
 use app\models\Kelas;
 use app\models\StudentStatus;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 /* @var $form yii\widgets\ActiveForm */
@@ -44,11 +45,12 @@ $listStudentStatus=ArrayHelper::map($student_status,'id','name');
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'nisn')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nik')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'nis')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>
+
+   <!--  <?= $form->field($model, 'nisn')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'birth_place')->textInput(['maxlength' => true]) ?>
 
@@ -83,9 +85,9 @@ $listStudentStatus=ArrayHelper::map($student_status,'id','name');
     <?= $form->field($model, 'class_id')->dropDownList($listKelas, ['prompt'=>'Pilih..']) ?>
 
     <?= $form->field($model, 'student_status_id')->dropDownList($listStudentStatus, ['prompt'=>'Pilih..']) ?>
-
+ -->
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Simpan') : Yii::t('app', 'Simpan'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

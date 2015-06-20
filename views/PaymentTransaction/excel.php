@@ -24,10 +24,10 @@ $this->params['breadcrumbs'][] = $this->title;
 // \bsource\gridview\ExcelGrid::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-		'extension'=>'xlsx',
+		'extension'=>'xls',
 		'filename'=>'Transaksi Pembayaran',
 		'properties' =>[
-			//'creator'	=>'',
+			'creator'	=>'KaryaKami.com',
 			//'title' 	=> '',
 			//'subject' 	=> '',
 			//'category'	=> '',
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'id',
-            'student_id',
+            'student_nis',
             'payment_for_id',
             'payment_for_name',
             'year',

@@ -4,11 +4,14 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\models\SettingSystem;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
 
 AppAsset::register($this);
+
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -26,44 +29,46 @@ AppAsset::register($this);
     <div class="wrap">
         <?php
             NavBar::begin([
-                'brandLabel' => 'Sistem Keuangan Sekolah',
+                'brandLabel' => SettingSystem::findOne(1)->name,
                 'brandUrl' => Yii::$app->homeUrl,
                 'options' => [
-                    'class' => 'navbar-inverse navbar-fixed-top',
+                    'class' => 'navbar-default navbar-fixed-top',
                 ],
             ]);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-right'],
                 'items' => [
-                
+
+                Yii::$app->user->isGuest ?'':
                     ['label' => 'Transaksi Pembayaran', 'url' => ['/paymenttransaction'],
                         'options'=>['class'=>'dropdown'],
                         'items' => [
                             ['label' => 'Pembayaran', 'url' => ['/paymenttransaction']],
                             ['label' => 'Jenis Pembayaran', 'url' => ['/paymentfor']],
                             ['label' => 'Metode Pembayaran', 'url' => ['/paymentmethod']],
-                            ['label' => 'Status Pembayaran', 'url' => ['/paymentstatus']],
+                            // ['label' => 'Status Pembayaran', 'url' => ['/paymentstatus']],
                         ]
 
                     ],
+                    Yii::$app->user->isGuest ?'':
                     ['label' => 'Data Siswa', 'url' => ['/student'],
-                        'options'=>['class'=>'dropdown'],
-                        'items' => [
-                            ['label' => 'Siswa', 'url' => ['/student']],
-                            ['label' => 'Kelas', 'url' => ['/kelas']],
-                            ['label' => 'Semester', 'url' => ['/semester']],
-                            ['label' => 'Status Siswa', 'url' => ['/studentstatus']],
-                            ['label' => 'Agama', 'url' => ['/religion']],
-                            ['label' => 'Provinsi', 'url' => ['/province']],
-                            ['label' => 'Kabupate ', 'url' => ['/regency']],
-                            ['label' => 'Kab / Kota', 'url' => ['/city']],
-                            // ['label' => 'Jenis Kelamin', 'url' => ['/gender']],
-                        ]
+                        // 'options'=>['class'=>'dropdown'],
+                        // 'items' => [
+                        //     ['label' => 'Siswa', 'url' => ['/student']],
+                        //     ['label' => 'Kelas', 'url' => ['/kelas']],
+                        //     ['label' => 'Semester', 'url' => ['/semester']],
+                        //     ['label' => 'Status Siswa', 'url' => ['/studentstatus']],
+                        //     ['label' => 'Agama', 'url' => ['/religion']],
+                        //     ['label' => 'Provinsi', 'url' => ['/province']],
+                        //     ['label' => 'Kabupate ', 'url' => ['/regency']],
+                        //     ['label' => 'Kab / Kota', 'url' => ['/city']],
+                        //     ['label' => 'Jenis Kelamin', 'url' => ['/gender']],
+                        // ]
                     ],
+                    Yii::$app->user->isGuest ?'':
+                    ['label' => 'Pengaturan', 'url' => ['/settingsystem']],
 
-                    ['label' => 'Seting Sistem', 'url' => ['/']],
-
-                    ['label' => 'Contact', 'url' => ['/site/contact']],
+                    // ['label' => 'Contact', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
                         ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -84,8 +89,8 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; KaryaKami.com <?= date('Y') ?></p>
-            <p class="pull-right"><?= Yii::powered() ?></p>
+            <p class="pull-left">&copy; <a href="http://karyakami.com">KaryaKami.com</a> <?= date('Y') ?></p>
+            <!-- <p class="pull-right"><?= Yii::powered() ?></p> -->
         </div>
     </footer>
 

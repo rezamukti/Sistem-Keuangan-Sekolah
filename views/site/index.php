@@ -1,6 +1,7 @@
 <?php
 /* @var $this yii\web\View */
-$this->title = 'My Yii Application';
+use app\models\SettingSystem;
+$this->title = SettingSystem::findOne(1)->name;
 ?>
 <div class="site-index">
 

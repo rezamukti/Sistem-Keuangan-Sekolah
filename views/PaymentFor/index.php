@@ -3,11 +3,17 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 
+use app\models\Semester;
+use yii\helpers\ArrayHelper;
+
+$semester=Semester::find()->all();
+$listData=ArrayHelper::map($semester,'id','name');
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\PaymentForSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Payment Fors');
+$this->title = Yii::t('app', 'Jenis Pembayaran');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-for-index">
@@ -16,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('app', 'Create Payment For'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Entri Jenis Pembayaran'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,11 +31,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+            // 'id',
             'name',
             'year',
             'price',
-            'semester_id',
+            [
+                'attribute'=>'semester_id',
+                'label'=>'Semester',
+                'filter'=>$listData, 
+                'value' => function($data){
+                    return $data->getSemesterName();
+                }
+            ],
+
             // 'soft_delete',
 
             ['class' => 'yii\grid\ActionColumn'],

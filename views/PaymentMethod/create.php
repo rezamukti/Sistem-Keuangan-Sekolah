@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\PaymentMethod */
 
-$this->title = Yii::t('app', 'Create Payment Method');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Payment Methods'), 'url' => ['index']];
+$this->title = Yii::t('app', 'Entri Metode Pembayaran');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Metode Pembayaran'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="payment-method-create">

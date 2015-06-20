@@ -34,7 +34,7 @@ $listPaymentMethod=ArrayHelper::map($paymentMethod,'id','name');
     <?= $form->field($model, 'payment_method_id')->dropDownList($listPaymentMethod, ['id'=>1], ['prompt'=>'Pilih..']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Simpan') : Yii::t('app', 'Perbarui'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Simpan') : Yii::t('app', 'Simpan'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

@@ -26,6 +26,7 @@ class PaymentMethod extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['name'], 'required', 'message' => 'Harus diisi!'],
             [['name'], 'string', 'max' => 15]
         ];
     }
@@ -37,7 +38,7 @@ class PaymentMethod extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Metode Pembayaran',
         ];
     }
 }

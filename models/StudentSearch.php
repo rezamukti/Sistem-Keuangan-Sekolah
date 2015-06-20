@@ -19,7 +19,7 @@ class StudentSearch extends Student
     {
         return [
             [['id', 'gender_id', 'religion_id', 'province_id', 'regency_id', 'city_id', 'class_id', 'student_status_id'], 'integer'],
-            [['nisn', 'nik', 'full_name', 'birth_place', 'birth_date', 'mother_name', 'father_name', 'parent_occupation', 'address', 'rt', 'rw', 'postal_code', 'no_hp'], 'safe'],
+            [['nisn', 'nis', 'full_name', 'birth_place', 'birth_date', 'mother_name', 'father_name', 'parent_occupation', 'address', 'rt', 'rw', 'postal_code', 'no_hp'], 'safe'],
         ];
     }
 
@@ -68,7 +68,7 @@ class StudentSearch extends Student
         ]);
 
         $query->andFilterWhere(['like', 'nisn', $this->nisn])
-            ->andFilterWhere(['like', 'nik', $this->nik])
+            ->andFilterWhere(['like', 'nis', $this->nis])
             ->andFilterWhere(['like', 'full_name', $this->full_name])
             ->andFilterWhere(['like', 'birth_place', $this->birth_place])
             ->andFilterWhere(['like', 'mother_name', $this->mother_name])

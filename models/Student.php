@@ -9,7 +9,7 @@ use Yii;
  *
  * @property integer $id
  * @property string $nisn
- * @property string $nik
+ * @property string $nis
  * @property string $full_name
  * @property string $birth_place
  * @property string $birth_date
@@ -50,9 +50,10 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['nis', 'full_name'], 'required', 'message'=>'Harus diisi.'],
             [['birth_date'], 'safe'],
             [['gender_id', 'religion_id', 'province_id', 'regency_id', 'city_id', 'class_id', 'student_status_id'], 'integer'],
-            [['nisn', 'nik'], 'string', 'max' => 15],
+            [['nisn', 'nis'], 'string', 'max' => 15],
             [['full_name', 'mother_name', 'father_name', 'parent_occupation'], 'string', 'max' => 50],
             [['birth_place'], 'string', 'max' => 30],
             [['address'], 'string', 'max' => 500],
@@ -70,8 +71,8 @@ class Student extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'nisn' => 'Nisn',
-            'nik' => 'Nik',
-            'full_name' => 'Full Name',
+            'nis' => 'No Induk Siswa',
+            'full_name' => 'Nama Lengkap',
             'birth_place' => 'Birth Place',
             'birth_date' => 'Birth Date',
             'gender_id' => 'Gender ID',
@@ -82,8 +83,7 @@ class Student extends \yii\db\ActiveRecord
             'province_id' => 'Province ID',
             'regency_id' => 'Regency ID',
             'address' => 'Address',
-            'city_id' => 'city or Subdistrict 
-',
+            'city_id' => 'city or Subdistrict',
             'rt' => 'Rt',
             'rw' => 'Rw',
             'postal_code' => 'Postal Code',

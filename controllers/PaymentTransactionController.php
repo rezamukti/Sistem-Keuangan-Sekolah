@@ -7,6 +7,7 @@ use app\models\PaymentTransaction;
 use app\models\PaymentTransactionSearch;
 use app\models\PaymentFor;
 use app\models\PaymentTransactionLog;
+use app\models\SettingSystem;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -15,6 +16,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 use mPDF;
+use kartik\mpdf\Pdf;
 /**
  * PaymentTransactionController implements the CRUD actions for PaymentTransaction model.
  */
@@ -174,36 +176,18 @@ class PaymenttransactionController extends Controller
         }
     }
 
-    public function actionCreate_mpdf(){
-        $mpdf=new mPDF();
-        $mpdf->WriteHTML($this->renderPartial('mpdf'));
-        $mpdf->Output();
-        exit;
-        //return $this->renderPartial('mpdf');
-    }
-    public function actionSample_pdf() {
-        $mpdf = new mPDF;
-        $mpdf->WriteHTML($this->render('view',['model' => $this->findModel(1)]));
-        $mpdf->Output();
-        exit;
-    }
-    public function actionDownload(){
-        $mpdf=new mPDF();
-        $mpdf->WriteHTML($this->renderPartial('view'));
-        $mpdf->Output('MyPDF.pdf', 'D');
+    public function actionPdf($id) {
+        $pdf = new Pdf(); // or new Pdf();
+        $settingSystem = SettingSystem::findOne(['id' => 1]);
+        $mpdf = $pdf->api; // fetches mpdf api
+        // $mpdf->SetHeader($settingSystem->name); // call methods or set any properties
+        // $mpdf->SetHeader($settingSystem->address); // call methods or set any properties
+        $mpdf->WriteHtml($this->renderPartial('pdf',['model' => $this->findModel($id)])); // call mpdf write html
+        $mpdf->Output(); // call the mpdf api output as needed
         exit;
     }
 
-    public function actionExcel()
-    {
-        $searchModel = new PaymentTransactionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
-        return $this->renderPartial('excel', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-            ]);
-    }
 
 
 }
