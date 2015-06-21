@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\models;
 
 use Yii;
@@ -30,7 +38,7 @@ class SettingSystem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'address', 'email', 'telp'], 'required', 'message' => 'Harus diisi!'],
+            [['name', 'address', 'email', 'telp', 'regency'], 'required', 'message' => 'Harus diisi!'],
             [['name', 'description'], 'string', 'max' => 245],
             [['address'], 'string', 'max' => 445],
             [['email', 'telp'], 'string', 'max' => 45],
@@ -50,6 +58,7 @@ class SettingSystem extends \yii\db\ActiveRecord
             'address' => 'Alamat Lengkap Sekolah',
             'email' => 'Email',
             'telp' => 'Telp',
+            'regency' => 'Kabupaten/Kota',
         ];
     }
 }

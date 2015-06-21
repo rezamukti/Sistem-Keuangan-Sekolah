@@ -1,5 +1,14 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -17,6 +26,8 @@ use yii\widgets\ActiveForm;
    <!--  <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?> -->
    
     <?= $form->field($model, 'address')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'regency')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 

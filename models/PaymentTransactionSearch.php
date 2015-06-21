@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\models;
 
 use Yii;
@@ -18,8 +26,8 @@ class PaymentTransactionSearch extends PaymentTransaction
     public function rules()
     {
         return [
-            [['id', 'student_nis', 'payment_for_id', 'payment_status_id', 'payment_method_id', 'user_id'], 'integer'],
-            [['payment_for_name', 'year', 'month', 'create_at'], 'safe'],
+            [['id', 'payment_for_id', 'payment_status_id', 'payment_method_id', 'user_id'], 'integer'],
+            [['student_nis', 'payment_for_name', 'year', 'month', 'create_at'], 'safe'],
             [['price_invoice', 'student_paid'], 'number'],
         ];
     }

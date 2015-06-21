@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 use yii\helpers\Html;
 // use yii\grid\GridView;
 
@@ -68,13 +76,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'student_paid',
                     [
                         'attribute' => 'create_at',
-                        'label' => 'Tanggal Bayar (Tahun-Bln-Tgl)'
+                        'label' => 'Tanggal Bayar (Tahun-Bln-Tgl)',
                     ],
                     [
                         'class' => 'yii\grid\ActionColumn',
                         'template' => '{view} {update}',
                     ]
             ],
+            'emptyText' => 'Tidak ada data.',
             'toolbar' => [
                 '{export}',
             ]

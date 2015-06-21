@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\models;
 
 use Yii;
@@ -51,6 +59,7 @@ class Student extends \yii\db\ActiveRecord
     {
         return [
             [['nis', 'full_name'], 'required', 'message'=>'Harus diisi.'],
+            [['nis'], 'unique', 'message'=>'No Induk ini sudah digunakan'],
             [['birth_date'], 'safe'],
             [['gender_id', 'religion_id', 'province_id', 'regency_id', 'city_id', 'class_id', 'student_status_id'], 'integer'],
             [['nisn', 'nis'], 'string', 'max' => 15],

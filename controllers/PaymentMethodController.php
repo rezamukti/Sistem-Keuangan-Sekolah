@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\controllers;
 
 use Yii;
@@ -93,7 +101,8 @@ class PaymentmethodController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post())) {
+        // if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
@@ -110,7 +119,7 @@ class PaymentmethodController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        // $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

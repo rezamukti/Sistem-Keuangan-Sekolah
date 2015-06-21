@@ -1,4 +1,15 @@
 <?php
+
+
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
+
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
@@ -19,6 +30,8 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="KaryaKami.com">
+    <meta name="email" content="ycared@gmail.com">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -71,7 +84,7 @@ AppAsset::register($this);
                     // ['label' => 'Contact', 'url' => ['/site/contact']],
                     Yii::$app->user->isGuest ?
                         ['label' => 'Login', 'url' => ['/site/login']] :
-                        ['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
+                        ['label' => 'Logout (' . Yii::$app->user->identity->full_name . ')',
                             'url' => ['/site/logout'],
                             'linkOptions' => ['data-method' => 'post']],
                 ],
@@ -89,7 +102,7 @@ AppAsset::register($this);
 
     <footer class="footer">
         <div class="container">
-            <p class="pull-left">&copy; <a href="http://karyakami.com">KaryaKami.com</a> <?= date('Y') ?></p>
+            <p class="pull-left">Hak Cipta &copy; <a href="http://karyakami.com">KaryaKami.com</a> <?= date('Y') ?></p>
             <!-- <p class="pull-right"><?= Yii::powered() ?></p> -->
         </div>
     </footer>

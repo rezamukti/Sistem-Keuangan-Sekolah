@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -32,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'description',
             'name',
             'address',
+            'regency',
             'email:email',
             'telp',
         ],

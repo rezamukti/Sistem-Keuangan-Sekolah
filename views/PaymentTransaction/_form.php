@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
@@ -22,6 +30,7 @@ $listPaymentMethod=ArrayHelper::map($paymentMethod,'id','name');
 <div class="payment-transaction-form">
 
     <?php $form = ActiveForm::begin(); ?>
+    <?php // echo $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'student_nis')->textInput() ?>
 

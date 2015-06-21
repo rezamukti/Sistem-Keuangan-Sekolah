@@ -1,10 +1,18 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\models\Semester;
 
-$semester = Semester::findOne($model->id);
+$semester = Semester::findOne($model->semester_id);
 
 /* @var $this yii\web\View */
 /* @var $model app\models\PaymentFor */

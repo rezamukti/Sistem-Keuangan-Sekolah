@@ -1,5 +1,13 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\models;
 
 use Yii;
@@ -33,7 +41,7 @@ class PaymentFor extends \yii\db\ActiveRecord
             [['name', 'year', 'price', 'semester_id'], 'required', 'message'=>'Harus diisi!'],
             [['year', 'soft_delete'], 'safe'],
             [['price'], 'number'],
-            [['name'], 'string', 'max' => 15],
+            [['name'], 'string', 'max' => 50],
             [['semester_id'], 'string', 'max' => 1]
         ];
     }
@@ -47,7 +55,7 @@ class PaymentFor extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Jenis Pembayaran',
             'year' => 'Tahun',
-            'price' => 'Harga',
+            'price' => 'Sebesar Rp.',
             'semester_id' => 'Semester',
             'soft_delete' => 'Soft Delete',
         ];

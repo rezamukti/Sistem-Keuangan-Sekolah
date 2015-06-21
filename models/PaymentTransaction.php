@@ -1,8 +1,17 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
 namespace app\models;
 
 use Yii;
+use app\models\Student;
 
 /**
  * This is the model class for table "payment_transaction".
@@ -35,10 +44,10 @@ class PaymentTransaction extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['student_nis', 'payment_for_id', 'payment_status_id', 'payment_method_id', 'user_id'], 'integer'],
+            [['payment_for_id', 'payment_status_id', 'payment_method_id', 'user_id'], 'integer', 'message' => 'Harus angka.'],
             [['student_nis', 'payment_for_id', 'student_paid', 'payment_method_id','month'], 'required', 'message' => 'Harus diisi.'],
             [['year', 'create_at'], 'safe'],
-            [['price_invoice', 'student_paid'], 'number'],
+            [['price_invoice', 'student_paid'], 'number','message' => 'Harus angka, tanpa tanda titik / koma.'],
             [['payment_for_name'], 'string', 'max' => 45]
         ];
     }
@@ -63,4 +72,5 @@ class PaymentTransaction extends \yii\db\ActiveRecord
             'create_at' => 'Tanggal Bayar',
         ];
     }
+
 }

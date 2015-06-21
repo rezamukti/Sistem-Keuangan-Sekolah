@@ -1,5 +1,15 @@
 <?php
 
+
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
+
+
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
@@ -45,7 +55,7 @@ $listStudentStatus=ArrayHelper::map($student_status,'id','name');
 
     <?php $form = ActiveForm::begin(); ?>
 
-
+    
     <?= $form->field($model, 'nis')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'full_name')->textInput(['maxlength' => true]) ?>

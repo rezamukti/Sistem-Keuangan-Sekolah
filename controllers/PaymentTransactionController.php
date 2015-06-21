@@ -1,5 +1,12 @@
 <?php
 
+ /**
+  * @package    KeuanganSekolah
+  * @author     Reza Mukti <ycared@gmail.com>
+  * @copyright  Copyright (c) 2015, KaryaKami.
+  * @link       http://karyakami.com
+  */
+
 namespace app\controllers;
 
 use Yii;
@@ -8,6 +15,7 @@ use app\models\PaymentTransactionSearch;
 use app\models\PaymentFor;
 use app\models\PaymentTransactionLog;
 use app\models\SettingSystem;
+use app\models\Student;
 
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -25,23 +33,23 @@ class PaymenttransactionController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::className(),
-                'actions' =>[
-                                'delete' => ['post'],
-                            ],
-            ],
-            'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['update', 'index', 'create', 'delete', 'view'],
-                'rules' =>  [
-                                [
-                                    'actions' => ['update', 'index', 'create', 'view'],
-                                    'allow' => true,
-                                    'roles' => ['@'],
-                                ],
-                            ],
-            ],
+        'verbs' => [
+        'class' => VerbFilter::className(),
+        'actions' =>[
+        'delete' => ['post'],
+        ],
+        ],
+        'access' => [
+        'class' => AccessControl::className(),
+        'only' => ['update', 'index', 'create', 'delete', 'view', 'pdf'],
+        'rules' =>  [
+        [
+        'actions' => ['update', 'index', 'create', 'view', 'pdf'],
+        'allow' => true,
+        'roles' => ['@'],
+        ],
+        ],
+        ],
         ];
     }
 
@@ -82,6 +90,16 @@ class PaymenttransactionController extends Controller
         $model = new PaymentTransaction();
 
         if ($model->load(Yii::$app->request->post())) {
+            if (!Student::find()->where(['nis' => $model->student_nis])->exists()) {
+                $checkNIS=null;
+                $model->addError('student_nis', "No Induk $model->student_nis tidak ada dalam Data Siswa.");
+            } else {
+                $checkNIS=true;
+            }
+        }
+
+
+        if ($model->load(Yii::$app->request->post()) && $checkNIS!== null) {
 
             $paymentFor = PaymentFor::findOne($model->payment_for_id);
 
@@ -119,8 +137,17 @@ class PaymenttransactionController extends Controller
         $request = Yii::$app->request;
         $model = $this->findModel($id);
 
-
         if ($model->load(Yii::$app->request->post())) {
+            if (!Student::find()->where(['nis' => $model->student_nis])->exists()) {
+                $checkNIS=null;
+                $model->addError('student_nis', "No Induk $model->student_nis tidak ada dalam Data Siswa.");
+            } else {
+                $checkNIS=true;
+            }
+        }
+
+
+        if ($model->load(Yii::$app->request->post()) && $checkNIS !== null) {
 
             // Start logging table transaction
             $beforeUpdate = PaymentTransaction::findOne($id);
@@ -177,8 +204,7 @@ class PaymenttransactionController extends Controller
     }
 
     public function actionPdf($id) {
-        $pdf = new Pdf(); // or new Pdf();
-        $settingSystem = SettingSystem::findOne(['id' => 1]);
+        $pdf = new Pdf(['format' => 'A5']); // or new Pdf();
         $mpdf = $pdf->api; // fetches mpdf api
         // $mpdf->SetHeader($settingSystem->name); // call methods or set any properties
         // $mpdf->SetHeader($settingSystem->address); // call methods or set any properties

@@ -10,7 +10,7 @@ $this->title = SettingSystem::findOne(1)->name;
 
         <p class="lead">Memudahkan Pengelolan Keuangan Sekolah.</p>
 
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Tata Cara Pemakaian</a></p>
+        <p><a class="btn btn-lg btn-success" href="https://github.com/rezamukti/Sistem-Keuangan-Sekolah/archive/master.zip">Download</a></p>
     </div>
 
     <div class="body-content">
@@ -19,10 +19,18 @@ $this->title = SettingSystem::findOne(1)->name;
             <div class="col-lg-4">
                 <h2>Fitur</h2>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <p></p>
+                <ul>
+                    <li>Export transaksi pembayaran ke file excel dan pdf, se</li>
+                    <li>Report transaksi pembayaran perhari, Anda bisa mengetahui siapa saja siswa yang melakukan pembayaran setiap harinya</li>
+                    <li>Histori transaksi, fitur yang digunakan untuk mencatat perubahan transaksi. Misal ketika siswa sudah membayar uang sebesar Rp 100.000 lalu ada perubahan data menjadi Rp 90.000 maka semua transaksi ini tercatat dalam sistem.</li>
+                    <li>Teknologi berbasis web</li>
+                    <li>Transparasi antara pihat sekolah dan orang tua siswa, jadi orang tua siswa bisa mengecek pembayaran apa saja yang sudah lunas</li>
+                    <li>Mudah diintegrasikan dengan sistem lain</li>
+                    <li>Cocok digunakan untuk TK, SD, SMP, SMA</li>
+                    <li>Cetak bukti pembayaran </li>
+                    <li>Sangat mudah digunakan, tinggal pembayaran </li>
+                </ul>
 
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
